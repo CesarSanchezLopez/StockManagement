@@ -43,6 +43,7 @@ Backend/StockManagement.Api/appsettings.Development.json
 cd Backend/StockManagement.Api
 
 dotnet ef migrations add InitialCreate
+
 dotnet ef database update
 
 
@@ -65,7 +66,9 @@ export const environment = {
 ### 6. Corre el Frontend Angular
 
 cd Frontend
+
 npm install
+
 ng serve
 
 
