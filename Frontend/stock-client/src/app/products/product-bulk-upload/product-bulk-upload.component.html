@@ -1,0 +1,22 @@
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+  <div class="card p-5 mt-4 mb-4 bg-body-secondary text-body-primary shadow-lg rounded-lg" 
+       style="display:block; margin:auto; width: 80%; max-width: 800px; min-width: 300px; align-self: center;">
+
+    <div class="card-body text-center fs-5">
+<div class="container mt-4">
+  <h3 class="mb-3">⬆️ Carga Masiva de Productos</h3>
+
+  <form (ngSubmit)="submit()">
+    <div class="mb-3">
+      <label for="bulkText" class="form-label">Pegue aquí el JSON de productos</label>
+      <textarea id="bulkText" class="form-control" rows="10" [(ngModel)]="bulkText" name="bulkText"></textarea>
+    </div>
+    <button class="btn btn-primary" type="submit">Cargar Productos</button>
+  </form>
+
+  <div class="text-success mt-3" *ngIf="successMsg">{{ successMsg }}</div>
+  <div class="text-danger mt-3" *ngIf="errorMsg">{{ errorMsg }}</div>
+</div>
+</div>
+</div>
+</div>

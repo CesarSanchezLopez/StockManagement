@@ -1,0 +1,47 @@
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+  <div class="card p-5 mt-4 mb-4 bg-body-secondary text-body-primary shadow-lg rounded-lg" 
+       style="display:block; margin:auto; width: 80%; max-width: 800px; min-width: 300px; align-self: center;">
+
+    <div class="card-body text-center fs-5">
+<div class="container mt-4">
+  <h3 class="mb-3">📦 Lista de Productos</h3>
+
+  <div class="mb-3 d-flex gap-2">
+    <button class="btn btn-outline-secondary" (click)="loadProducts()">Todos</button>
+    <button class="btn btn-outline-primary" (click)="filterByState(0)">Disponibles</button>
+    <button class="btn btn-outline-warning" (click)="filterByState(1)">Salidos</button>
+    <button class="btn btn-outline-danger" (click)="filterByState(2)">Defectuosos</button>
+  </div>
+
+  <div *ngIf="successMsg" class="alert alert-success py-2">{{ successMsg }}</div>
+  <div *ngIf="errorMsg" class="alert alert-danger py-2">{{ errorMsg }}</div>
+
+  <table class="table table-striped shadow-sm mt-3" *ngIf="products.length > 0">
+    <thead class="table-light">
+      <tr>
+        <th>Nombre</th>
+        <th>Tipo de Elaboración</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of products">
+        <td>{{ p.name }}</td>
+        <td>{{ p.productionType }}</td>
+        <td>{{ getStateName(p.state) }}</td>
+        <td>
+          <button *ngIf="p.state === 0" class="btn btn-sm btn-warning me-2" (click)="markDefective(p.id)">❌ Defectuoso</button>
+          <button *ngIf="p.state === 0" class="btn btn-sm btn-success" (click)="markShipped(p.id)">🚚 Salido</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="products.length === 0" class="text-muted mt-3">
+    No hay productos para mostrar.
+  </div>
+</div>
+</div>
+</div>
+</div>
