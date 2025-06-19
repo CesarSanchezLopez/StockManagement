@@ -38,8 +38,7 @@ Backend/StockManagement.Api/appsettings.Development.json
   }
 }
 
-### 3. Ejecuta las migraciones
-```bash
+### 3. Ejecuta las migracionesbash
 cd Backend/StockManagement.Api
 
 dotnet ef migrations add InitialCreate
@@ -64,7 +63,7 @@ export const environment = {
 
 
 ### 6. Corre el Frontend Angular
-```bash
+bash
 cd Frontend
 
 npm install
