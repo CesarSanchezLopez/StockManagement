@@ -35,10 +35,10 @@ export class ProductListComponent implements OnInit {
   markShipped(id: string): void {
     this.productService.markAsShipped(id).subscribe({
       next: () => {
-        this.successMsg = 'Producto marcado como Salido';
+        this.successMsg = 'Producto marcado como Despachado';
         this.loadProducts();
       },
-      error: () => this.errorMsg = 'No se pudo marcar como Salido'
+      error: () => this.errorMsg = 'No se pudo marcar como Despachado'
     });
   }
 
@@ -53,6 +53,6 @@ export class ProductListComponent implements OnInit {
   }
 
   getStateName(state: number): string {
-    return ['Disponible', 'Salido', 'Defectuoso'][state] || 'Desconocido';
+    return ['Disponible', 'Despachado', 'Defectuoso'][state] || 'Desconocido';
   }
 }

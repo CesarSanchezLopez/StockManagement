@@ -25,7 +25,7 @@ export class ProductService {
 
   // Obtener todos los productos (Nota: este método no está definido en el backend aún)
   getAll(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.apiUrl}/state/0`); // Por defecto, estado 'Disponible'
+    return this.http.get<Product[]>(this.apiUrl);//return this.http.get<Product[]>(`${this.apiUrl}/state/0`); // Por defecto, estado 'Disponible'
   }
 
   // Obtener productos por estado

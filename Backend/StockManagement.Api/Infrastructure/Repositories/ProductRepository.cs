@@ -13,11 +13,14 @@ namespace StockManagement.Api.Infrastructure.Repositories
         {
             _context = context;
         }
-
+        public async Task<IEnumerable<Product>> GetAllAsync()
+        {
+            return await _context.Products.ToListAsync();
+        }
         public async Task AddAsync(Product product)
         {
             await _context.Products.AddAsync(product);
-            await _context.SaveChangesAsync(); // Guarda los cambios
+            await _context.SaveChangesAsync(); 
         }
 
         public async Task AddRangeAsync(IEnumerable<Product> products)

@@ -1,4 +1,4 @@
-<div class="container d-flex justify-content-center align-items-center min-vh-100">
+<!-- <div class="container d-flex justify-content-center align-items-center min-vh-100">
   <div class="card p-5 mt-4 mb-4 bg-body-secondary text-body-primary shadow-lg rounded-lg" 
        style="display:block; margin:auto; width: 80%; max-width: 800px; min-width: 300px; align-self: center;">
 
@@ -17,6 +17,75 @@
   <div class="text-success mt-3" *ngIf="successMsg">{{ successMsg }}</div>
   <div class="text-danger mt-3" *ngIf="errorMsg">{{ errorMsg }}</div>
 </div>
+</div>
+</div>
+</div> -->
+
+ <div class="card p-5 mt-4 mb-4 bg-body-secondary text-body-primary shadow-lg rounded-lg" 
+       style="display:block; margin:auto; width: 80%; max-width: 800px; min-width: 300px; align-self: center;">
+<div class="container mt-4">
+  <h3 class="mb-3">⬆️ Carga Masiva de Productos</h3>
+
+  <form (ngSubmit)="submit()" novalidate>
+    <div class="mb-3">
+      <label class="form-label">Texto JSON</label>
+      <!-- <input type="file" (change)="handleFileUpload($event)" class="form-control mb-2" accept=".json" /> -->
+
+      <textarea
+        id="bulkText"
+        class="form-control"
+        rows="20" cols="100"
+        [(ngModel)]="bulkText"
+        name="bulkText"
+        placeholder="O pega el JSON aquí..."
+      ></textarea>
+
+      <div class="form-text">
+        <a href="#" (click)="insertExample($event)">👉 Ver ejemplo</a>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Cargar Productos</button>
+  </form>
+
+  <div class="text-success mt-3" *ngIf="successMsg">{{ successMsg }}</div>
+  <div class="text-danger mt-3" *ngIf="errorMsg">{{ errorMsg }}</div>
+
+  <div *ngIf="previewProducts?.length" class="mt-4">
+  <h5>Vista previa (editable):</h5>
+  <table class="table table-bordered table-sm">
+    <thead class="table-light">
+      <tr>
+        <th>Nombre</th>
+        <th>Tipo</th>
+        <th>Estado</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of previewProducts; let i = index">
+        <td>
+          <input class="form-control form-control-sm" [(ngModel)]="previewProducts[i].name" />
+        </td>
+        <td>
+          <select class="form-select form-select-sm" [(ngModel)]="previewProducts[i].productionType">
+            <option value="Elaborado a mano">Elaborado a mano</option>
+            <option value="Elaborado a mano y máquina">Elaborado a mano y máquina</option>
+          </select>
+        </td>
+        <td>
+          <select class="form-select form-select-sm" [(ngModel)]="previewProducts[i].state">
+            <option [ngValue]="0">Disponible</option>
+            <option [ngValue]="1">Despachado</option>
+            <option [ngValue]="2">Defectuoso</option>
+          </select>
+        </td>
+        <td>
+          <button class="btn btn-sm btn-outline-danger" (click)="removeRow(i)">🗑️</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 </div>
 </div>

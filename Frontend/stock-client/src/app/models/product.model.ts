@@ -8,6 +8,6 @@ export interface Product {
 
 export enum ProductState {
   Disponible = 0,
-  Salido = 1,
+  Despachado = 1,
   Defectuoso = 2
 }

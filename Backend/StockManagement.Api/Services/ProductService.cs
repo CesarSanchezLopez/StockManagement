@@ -13,6 +13,10 @@ namespace StockManagement.Api.Services
             _repository = repository;
         }
 
+        public async Task<IEnumerable<Product>> GetAllAsync()
+        {
+            return await _repository.GetAllAsync();
+        }
         public async Task AddProductAsync(Product product)
         {
             ValidateProduct(product);
@@ -56,7 +60,7 @@ namespace StockManagement.Api.Services
             if (product.State != ProductState.Disponible)
                 throw new InvalidOperationException("Solo se pueden despachar productos disponibles");
 
-            product.State = ProductState.Salido;
+            product.State = ProductState.Despachado;
             await _repository.UpdateAsync(product);
         }
 

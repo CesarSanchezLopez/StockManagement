@@ -1,38 +1,27 @@
-<!-- <nav *ngIf="auth.isLoggedIn()" class="navbar navbar-expand-lg navbar-light bg-light shadow-sm px-4">
-  <a class="navbar-brand" routerLink="/">📦 Inventario</a>
 
-  <div class="collapse navbar-collapse">
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/products" routerLinkActive="active">Productos</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/register" routerLinkActive="active">Registrar Producto</a>
-      </li>
-    </ul>
+<nav *ngIf="auth.isLoggedIn()" class="navbar navbar-expand-lg navbar-dark bg-dark px-4 shadow-sm sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" routerLink="/">🧱 Inventario</a>
 
-    <button class="btn btn-outline-danger ms-auto" (click)="logout()">Cerrar sesión</button>
-  </div>
-</nav>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+      aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-<router-outlet></router-outlet> -->
-
-<nav *ngIf="auth.isLoggedIn()" class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
-  <a class="navbar-brand" href="#">🧱 Inventario</a>
-  <div class="collapse navbar-collapse">
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/products" routerLinkActive="active">📦 Productos</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/products/new" routerLinkActive="active">➕ Registrar</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/products/bulk" routerLinkActive="active">⬆️ Carga Masiva</a>
-      </li>
-    </ul>
-
-    <button class="btn btn-outline-light" (click)="logout()">Cerrar sesión</button>
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/products" routerLinkActive="active">📦 Productos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/products/new" routerLinkActive="active">➕ Registrar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/products/bulk" routerLinkActive="active">⬆️ Carga Masiva</a>
+        </li>
+      </ul>
+      <button class="btn btn-outline-light" (click)="logout()">🚪 Cerrar sesión</button>
+    </div>
   </div>
 </nav>
 

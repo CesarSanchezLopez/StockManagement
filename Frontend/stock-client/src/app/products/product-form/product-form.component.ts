@@ -21,7 +21,7 @@ export class ProductFormComponent {
   submit(): void {
     this.successMsg = '';
     this.errorMsg = '';
-
+    console.log('Producto enviado:', this.product);
     this.productService.addProduct(this.product).subscribe({
       next: () => {
         this.successMsg = '✅ Producto registrado con éxito';

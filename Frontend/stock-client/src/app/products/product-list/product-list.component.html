@@ -1,4 +1,4 @@
-<div class="container d-flex justify-content-center align-items-center min-vh-100">
+<!-- <div class="container d-flex justify-content-center align-items-center min-vh-100">
   <div class="card p-5 mt-4 mb-4 bg-body-secondary text-body-primary shadow-lg rounded-lg" 
        style="display:block; margin:auto; width: 80%; max-width: 800px; min-width: 300px; align-self: center;">
 
@@ -16,9 +16,9 @@
   <div *ngIf="successMsg" class="alert alert-success py-2">{{ successMsg }}</div>
   <div *ngIf="errorMsg" class="alert alert-danger py-2">{{ errorMsg }}</div>
 
-  <table class="table table-striped shadow-sm mt-3" *ngIf="products.length > 0">
+  <table class="table table-striped shadow-sm mt-3 " *ngIf="products.length > 0">
     <thead class="table-light">
-      <tr>
+      <tr class="text-center " >
         <th>Nombre</th>
         <th>Tipo de Elaboración</th>
         <th>Estado</th>
@@ -44,4 +44,69 @@
 </div>
 </div>
 </div>
+</div> -->
+
+<!-- <div class="container d-flex justify-content-center align-items-center min-vh-100"> -->
+  <div class="card p-5 mt-4 mb-4 bg-body-secondary text-body-primary shadow-lg rounded-lg" 
+       style="display:block; margin:auto; width: 80%; max-width: 800px; min-width: 300px; align-self: center;">
+
+    <!-- <div class="card-body text-center fs-5"> -->
+<div class="container mt-4">
+  <div class="card shadow-sm border-0">
+    <div class="card-body">
+      <h3 class="mb-4 text-center">📦 Lista de Productos</h3>
+
+      <!-- Filtros -->
+      <div class="d-flex justify-content-center flex-wrap gap-2 mb-3">
+        <button class="btn btn-outline-secondary" (click)="loadProducts()">Todos</button>
+        <button class="btn btn-outline-success" (click)="filterByState(0)">✔️ Disponibles</button>
+        <button class="btn btn-outline-warning" (click)="filterByState(1)">📦 Despachado</button>
+        <button class="btn btn-outline-danger" (click)="filterByState(2)">❌ Defectuosos</button>
+      </div>
+
+      <!-- Mensajes -->
+      <div *ngIf="successMsg" class="alert alert-success text-center">{{ successMsg }}</div>
+      <div *ngIf="errorMsg" class="alert alert-danger text-center">{{ errorMsg }}</div>
+
+      <!-- Tabla -->
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped text-center align-middle shadow-sm" *ngIf="products.length > 0">
+          <thead class="table-light">
+            <tr>
+              <th>Nombre</th>
+              <th>Tipo de Elaboración</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let p of products">
+              <td>{{ p.name }}</td>
+              <td>{{ p.productionType }}</td>
+              <td>
+                <span class="badge bg-success" *ngIf="p.state === 0">Disponible</span>
+                <span class="badge bg-warning text-dark" *ngIf="p.state === 1">Despachado</span>
+                <span class="badge bg-danger" *ngIf="p.state === 2">Defectuoso</span>
+              </td>
+              <td>
+                <div *ngIf="p.state === 0">
+                  <button class="btn btn-sm btn-outline-danger me-2" (click)="markDefective(p.id)">❌</button>
+                  <button class="btn btn-sm btn-outline-success" (click)="markShipped(p.id)">🚚</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Sin productos -->
+      <div *ngIf="products.length === 0" class="text-center text-muted mt-4">
+        No hay productos para mostrar.
+      </div>
+    </div>
+  </div>
 </div>
+
+    </div>
+  <!-- </div> -->
+<!-- </div> -->

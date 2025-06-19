@@ -2,18 +2,20 @@
   <div class="card p-5 mt-4 mb-4 bg-body-secondary text-body-primary shadow-lg rounded-lg" 
        style="display:block; margin:auto; width: 80%; max-width: 800px; min-width: 300px; align-self: center;">
 
-    <div class="card-body text-center fs-5">
-      <h2 class="mb-4">➕ Registrar Producto</h2>
+    <div class="container min-vh-100 d-flex justify-content-center align-items-center">
+  <div class="card shadow-lg border-0 rounded-4 p-4" style="width: 100%; max-width: 600px;">
+    <div class="card-body">
+      <h2 class="text-center mb-4">➕ Registrar Producto</h2>
 
       <form #productForm="ngForm" (ngSubmit)="submit()" novalidate>
         <!-- Nombre -->
-        <div class="form-group mb-3 text-start">
-          <label for="name">Nombre del producto</label>
+        <div class="mb-3">
+          <label for="name" class="form-label">Nombre del producto: </label>
           <input
             type="text"
-            class="form-control"
             id="name"
             name="name"
+            class="form-control"
             [(ngModel)]="product.name"
             required
             minlength="3"
@@ -25,16 +27,16 @@
         </div>
 
         <!-- Tipo de elaboración -->
-        <div class="form-group mb-3 text-start">
-          <label for="productionType">Tipo de elaboración</label>
+        <div class="mb-3">
+          <label for="productionType" class="form-label">Tipo de elaboración  :   </label>
           <select
-            class="form-select"
             id="productionType"
             name="productionType"
+            class="form-select"
             [(ngModel)]="product.productionType"
             required
           >
-            <option value="" disabled selected>Selecciona tipo</option>
+            <option value="" disabled selected>Selecciona tipo :</option>
             <option value="Elaborado a mano">Elaborado a mano</option>
             <option value="Elaborado a mano y máquina">Elaborado a mano y máquina</option>
           </select>
@@ -44,32 +46,38 @@
         </div>
 
         <!-- Estado -->
-        <div class="form-group mb-3 text-start">
-          <label for="state">Estado</label>
+        <div class="mb-4">
+          <label for="state" class="form-label">Estado :    </label>
           <select
-            class="form-select"
             id="state"
             name="state"
+            class="form-select"
             [(ngModel)]="product.state"
             required
           >
-            <option value="" disabled selected>Selecciona estado</option>
-            <option [value]="0">Disponible</option>
-            <option [value]="1">Salido</option>
-            <option [value]="2">Defectuoso</option>
+            <option [ngValue]="null" disabled selected>Selecciona estado</option>
+            <option [ngValue]="0">Disponible</option>
+            <option [ngValue]="1">Despachado</option>
+            <option [ngValue]="2">Defectuoso</option>
           </select>
-          <div class="text-danger mt-1" *ngIf="productForm.submitted && product.state === null">
+          <div class="text-danger mt-1" *ngIf="productForm.submitted && product.state == null">
             Selecciona estado
           </div>
         </div>
 
-        <button class="btn btn-success w-100 mt-3" type="submit" [disabled]="!productForm.valid">
+        <button
+          type="submit"
+          class="btn btn-success w-100 fw-semibold"
+          [disabled]="!productForm.valid"
+        >
           Registrar Producto
         </button>
 
-        <div class="text-success mt-3" *ngIf="successMsg">{{ successMsg }}</div>
-        <div class="text-danger mt-3" *ngIf="errorMsg">{{ errorMsg }}</div>
+        <div *ngIf="successMsg" class="alert alert-success mt-3">{{ successMsg }}</div>
+        <div *ngIf="errorMsg" class="alert alert-danger mt-3">{{ errorMsg }}</div>
       </form>
     </div>
   </div>
 </div>
+    </div>
+  </div>

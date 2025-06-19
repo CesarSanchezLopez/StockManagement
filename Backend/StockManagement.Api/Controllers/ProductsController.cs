@@ -10,7 +10,7 @@ namespace StockManagement.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    //[Authorize]
+    [Authorize]
     public class ProductsController : ControllerBase
     {
         private readonly IProductService _service;
@@ -20,6 +20,13 @@ namespace StockManagement.Api.Controllers
             _service = service;
         }
 
+        [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<Product>), 200)]
+        public async Task<IActionResult> GetAll()
+        {
+            var products = await _service.GetAllAsync();
+            return Ok(products);
+        }
         // 1. Visualizar productos por estado
         [HttpGet("state/{state}")]
         [ProducesResponseType(typeof(IEnumerable<Product>), 200)]
