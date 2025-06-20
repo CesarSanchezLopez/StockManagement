@@ -72,9 +72,6 @@ namespace StockManagement.Api.Services
             if (string.IsNullOrWhiteSpace(product.ProductionType))
                 throw new ArgumentException("El tipo de elaboración es obligatorio");
 
-            if (product.ProductionType != "Elaborado a mano" &&
-                product.ProductionType != "Elaborado a mano y máquina")
-                throw new ArgumentException("Tipo de elaboración inválido");
 
             if (!Enum.IsDefined(typeof(ProductState), product.State))
                 throw new ArgumentException("Estado del producto inválido");
